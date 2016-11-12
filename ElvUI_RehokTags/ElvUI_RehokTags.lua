@@ -3,9 +3,9 @@ local RT = E:NewModule('RehokTags');
 local _G = _G
 
 
-function RT:NewTags() -- Displays CurrentHP | Percent
-	_G["ElvUF"].Tags.Events['rcur'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
-	_G["ElvUF"].Tags.Methods['rcur'] = function(unit)
+function RT:NewTags() -- Displays CurrentHP | Percent --(2.04B | 100)--
+	_G["ElvUF"].Tags.Events['rcurrper'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
+	_G["ElvUF"].Tags.Methods['rcurper'] = function(unit)
 		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 		if (status) then
 			return status
@@ -23,10 +23,30 @@ function RT:NewTags() -- Displays CurrentHP | Percent
 			end
 		end
 	end
+	
+	-- Displays current HP --(2.04B, 2.04M, 204k, 204)--
+	_G["ElvUF"].Tags.Events['rcurr'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
+	_G["ElvUF"].Tags.Methods['rcurr'] = function(unit)
+		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+		if (status) then
+			return status
+		else
+			local v = UnitHealth(unit)
+			if abs(v) >= 1e9 then
+				return format("%.2fB", v / 1e9)
+			elseif abs(v) >= 1e6 then
+				return format("%.2fM", v / 1e6)
+			elseif abs(v) >= 1e3 then
+				return format("%.1fK", v / 1e3)
+			else
+				return format("%d", v)
+				end
+			end
+		end
 
 -- Displays Percent only --(intended for boss frames)--
 	_G["ElvUF"].Tags.Events['rper'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
-	_G["ElvUF"].Tags.Methods['rper'] = function(unit) -- Displays Percent --(intended for bosses)--
+	_G["ElvUF"].Tags.Methods['rper'] = function(unit)
 		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 		if (status) then
 			return status
@@ -59,7 +79,7 @@ end
 
 
 
- -- Displays long names better
+ -- Displays long names better --(First Name Second Name Last Name = F.S Last Name)--
 	_G["ElvUF"].Tags.Methods['rname'] = function(unit) 
 		local name = UnitName(unit)
 		name = name:gsub('(%S+) ',function(t) return t:sub(1,1)..'.' end)
