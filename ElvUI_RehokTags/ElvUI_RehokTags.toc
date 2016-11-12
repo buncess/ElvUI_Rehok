@@ -1,0 +1,8 @@
+## Interface: 70100
+## Author: Rehok
+## Version: 1
+## Title: |cffe300ffElvUI|r|cffe300ff_RehokTags|r
+## Notes: Custom Tags.
+## RequiredDeps: ElvUI
+
+ElvUI_RehokTags.lua

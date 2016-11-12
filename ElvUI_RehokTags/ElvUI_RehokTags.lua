@@ -1,0 +1,77 @@
+local E, L, V, P, G = unpack(ElvUI)
+local RT = E:NewModule('RehokTags');
+local _G = _G
+
+
+function RT:NewTags() -- Displays CurrentHP | Percent
+	_G["ElvUF"].Tags.Events['rcur'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
+	_G["ElvUF"].Tags.Methods['rcur'] = function(unit)
+		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+		if (status) then
+			return status
+		else
+			local v = UnitHealth(unit)
+			local p = (UnitHealth(unit)/UnitHealthMax(unit))*100
+		if abs(v) >= 1e9 then
+			return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
+		elseif abs(v) >= 1e6 then
+			return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
+		elseif abs(v) >= 1e3 then
+			return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
+			else
+				return format("%d", v) .. " | " .. format("%.1f", p)
+			end
+		end
+	end
+
+-- Displays Percent only --(intended for boss frames)--
+	_G["ElvUF"].Tags.Events['rper'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
+	_G["ElvUF"].Tags.Methods['rper'] = function(unit) -- Displays Percent --(intended for bosses)--
+		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+		if (status) then
+			return status
+		else
+			local p = (UnitHealth(unit)/UnitHealthMax(unit))*100
+			if p >= 1.1 then
+				return format("%.0f", p)
+			else
+				return format("%.1f", p)
+		end
+	end
+end
+
+
+
+-- Displays current power and 0 when no power instead of hiding 0
+	_G["ElvUF"].Tags.Events['rpow'] = 'UNIT_POWER UNIT_POWER_FREQUENT'
+	_G["ElvUF"].Tags.Methods['rpow'] = function(unit) 
+		local v = UnitPower(unit)
+		if abs(v) >= 1e9 then
+			return format("%.2fB", v / 1e9)
+		elseif abs(v) >= 1e6 then
+			return format("%.2fM", v / 1e6)
+		elseif abs(v) >= 1e3 then
+			return format("%.1fk", v / 1e3)
+		else
+			return format("%d", v)
+		end
+	end
+
+
+
+ -- Displays long names better
+	_G["ElvUF"].Tags.Methods['rname'] = function(unit) 
+		local name = UnitName(unit)
+		name = name:gsub('(%S+) ',function(t) return t:sub(1,1)..'.' end)
+    return name
+end
+end
+
+
+
+function RT:Initialize()
+	print("|cffe300ffRehok Tags have Initialized.|r")
+	RT:NewTags()
+end
+
+E:RegisterModule(RT:GetName())
