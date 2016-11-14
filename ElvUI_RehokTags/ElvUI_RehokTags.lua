@@ -113,8 +113,8 @@ end
 function()
 
 local isLogging = LoggingCombat(toggle)
-if isLogging == 1 then
-return true
+	if isLogging == 1 then
+	return true
 end
 
 
