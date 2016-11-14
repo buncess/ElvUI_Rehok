@@ -119,6 +119,15 @@ local m = GetDifficultyInfo
 end
 
 
+function()
+	local _, duration, _ = GetSpellCooldown(190319) -- Combustion
+	local _, duration2, _ = GetSpellCooldown(198929) -- Cindserstorm
+		if duration >= 1 and duration2 == 0 then
+	return true
+	end
+end
+
+
 function RT:Initialize()
 	print("|cffe300ffRehok Tags have Initialized.|r")
 	RT:NewTags()
