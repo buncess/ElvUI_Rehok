@@ -112,9 +112,9 @@ end
 
 function()
 
-local isLogging = LoggingCombat(toggle)
+local isLogging = LoggingCombat(1)
 local m = GetDifficultyInfo
-	if isLogging == 1 and m == 16 then
+	if isLogging = false and m == 16 then
 	return true
 end
 
