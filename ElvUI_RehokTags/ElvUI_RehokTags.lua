@@ -113,7 +113,8 @@ end
 function()
 
 local isLogging = LoggingCombat(toggle)
-	if isLogging == 1 then
+local m = GetDifficultyInfo
+	if isLogging == 1 and m == 16 then
 	return true
 end
 
