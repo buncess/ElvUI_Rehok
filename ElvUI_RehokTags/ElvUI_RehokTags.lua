@@ -108,6 +108,16 @@ end
 
 
 
+-- Testing later, Just saving code
+
+function()
+
+local isLogging = LoggingCombat(toggle)
+if isLogging == 1 then
+return true
+end
+
+
 function RT:Initialize()
 	print("|cffe300ffRehok Tags have Initialized.|r")
 	RT:NewTags()
