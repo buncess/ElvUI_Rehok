@@ -80,15 +80,15 @@ end
 	end
 	
  -- Displays CurrenPower | Percent --(2.04B | 100)--
-	_G["ElvUF"].Tags.Events['rcurrpow'] = 'UNIT_POWER UNIT_POWER_FREQUENT'
-	_G["ElvUF"].Tags.Methods['rcurrpow'] = function(unit) 
+	_G["ElvUF"].Tags.Events['rcurrperpow'] = 'UNIT_POWER UNIT_POWER_FREQUENT'
+	_G["ElvUF"].Tags.Methods['rcurrperpow'] = function(unit) 
 		local v = UnitPower(unit)
 		local p = (UnitPower(unit)/UnitPowerMax(unit))*100
-		if abs(v) >= 1e9 then
+			if abs(v) >= 1e9 then
 			return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
-		elseif abs(v) >= 1e6 then
+			elseif abs(v) >= 1e6 then
 			return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
-		elseif abs(v) >= 1e3 then
+			elseif abs(v) >= 1e3 then
 			return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
 			else
 				return format("%d", v) .. " | " .. format("%.1f", p)
@@ -96,6 +96,29 @@ end
 		end
 	end
 
+-- Displays current power --(2.04B, 2.04M, 204k, 204, 0)--
+	_G["ElvUF"].Tags.Events['rcurrpow'] = 'UNIT_POWER UNIT_POWER_FREQUENT'
+	_G["ElvUF"].Tags.Methods['rcurrppow'] = function(unit) 
+		local v = UnitPower(unit)
+			if abs(v) >= 1e9 then
+				return format("%.2fB", v / 1e9)
+			elseif abs(v) >= 1e6 then
+				return format("%.2fM", v / 1e6)
+			elseif abs(v) >= 1e3 then
+				return format("%.1fk", v / 1e3)
+			else
+				return format("%d", v)
+			end
+		end
+	end
+
+	
+ -- Displays Power Percent
+	_G["ElvUF"].Tags.Events['rperpow'] = 'UNIT_POWER UNIT_POWER_FREQUENT'
+	_G["ElvUF"].Tags.Methods['rperpow'] = function(unit) 
+		local p = (UnitPower(unit)/UnitPowerMax(unit))*100
+			return format("%.1f",p)
+		end
 
 
  -- Displays long names better --(First Name Second Name Last Name = F.S Last Name)--
