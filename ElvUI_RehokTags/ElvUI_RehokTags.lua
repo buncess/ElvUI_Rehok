@@ -5,7 +5,7 @@ local _G = _G
 
 function RT:NewTags() 
 	
-	-- Displays CurrentHP | Percent --(2.04B | 100)--
+-- Displays CurrentHP | Percent --(2.04B | 100)--
 	_G["ElvUF"].Tags.Events['rcurrper'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 	_G["ElvUF"].Tags.Methods['rcurper'] = function(unit)
 		local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
@@ -108,7 +108,7 @@ end
 
 
 function RT:Initialize()
-	print("|cffe300ffRehok Tags have Initialized.|r")
+	print("|cffe300ffRehok Tags|r have Initialized.")
 	RT:NewTags()
 end
 
