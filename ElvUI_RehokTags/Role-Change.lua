@@ -2,27 +2,27 @@
 
 aura_env.healspec = { 
     -- Druid
-    [105]
+    [RestorationDruid] = 105
     
     -- Monk
-    [270]
+    [MistweaverMonk] = 270
     
     -- Paladin
-    [65]
+    [HolyPaladin] = 65
     
     -- Priest
-    [256] -- Discipline
-    [257] -- Holy
+    [Discipline] = 256 -- Discipline
+    [HolyPriest] = 257 -- Holy
     
     -- Shaman
-    [264]
+    [RestorationShaman] = 264
 }
 
 aura_env.damagespec = {
 
     -- Death Knight
-    [251] -- Frost
-    [252] -- Unholy
+    [FrostDK] = 251 -- Frost
+    [UnholyDK] = 252-- Unholy
     
     -- Demon Hunter
     [577] -- Havoc
