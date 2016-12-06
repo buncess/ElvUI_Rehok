@@ -1,73 +1,35 @@
 -- OnInit
 
 aura_env.healspec = { 
-    -- Druid
-    [RestorationDruid] = 105
-    
-    -- Monk
-    [MistweaverMonk] = 270
-    
-    -- Paladin
-    [HolyPaladin] = 65
-    
-    -- Priest
-    [Discipline] = 256 -- Discipline
-    [HolyPriest] = 257 -- Holy
-    
-    -- Shaman
-    [RestorationShaman] = 264
+    [105] = true -- Restoration Druid
+    [270] = true -- Mistweaver Monk
+    [65] = true -- Holy Paladin
+    [256] = true -- Discipline Priest
+    [257] = true -- Holy Priest
+    [264] = true -- Restoration Shman
 }
 
 aura_env.damagespec = {
-
-    -- Death Knight
-    [FrostDK] = 251 -- Frost
-    [UnholyDK] = 252-- Unholy
-    
-    -- Demon Hunter
-    [577] -- Havoc
-    
-    -- Druid
-    [102] -- Balance
-    [103] -- Feral
-    
-    -- Monk
-    [269] -- Windwalker
-    
-    -- Paladin
-    [70] -- Retribution
-    
-    -- Priest
-    [258] -- Shadow
-    
-    -- Shaman
-    [262] -- Elemental
-    [263] -- Enhancement
-    
-    -- Warrior
-    [71] -- Arms
-    [72] -- Fury
+    [251] = true -- Frost Death Knight
+    [252] = true -- Unholy Death Knight
+    [577] = true -- Havoc Demon Hunter
+    [102] = true -- Balance Druid
+    [103] = true -- Feral Druid
+    [269] = true -- Windwalker Monk
+    [70] = true -- Retribution Paladin
+    [258] = true  -- Shadow Priest
+    [262] = true  -- Elemental Shaman
+    [263] = true  -- Enhancement Shaman
+    [71]  = true -- Arms Warrior
+    [72]  = true -- Fury Warrior
 }
 
 aura_env.tankspec = {
-    
-    -- Death Knight
-    [250] -- Blood
-    
-    -- Demon Hunter
-    [581] -- Vengeance
-    
-    -- Druid
-    [104] -- Guardian
-    
-    -- Monk
-    [268] -- Brewmaster
-    
-    -- Paladin
-    [66] -- Protection
-    
-    -- Warrior
-    [73] -- Protection
-    
+    [250]  = true -- Blood Death Knight
+    [581 = true  -- Vengeance Demon Hunter
+    [104] = true  -- Guardian Druid
+    [268] = true  -- Brewmaster Monk
+    [66] = true  -- Protection Paladin
+    [73]  = true -- Protection Warrior
 }
 
