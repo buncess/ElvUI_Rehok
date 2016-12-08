@@ -40,11 +40,11 @@ local PlayerRole = UnitGroupRolesAssigned("player")
 local specValue = GetSpecialization()
 local specID = GetSpecializationInfo(specValue)
 
-if aura_env.healspec[specID] and PlayerRole == HEALER then
+if aura_env.healspec[specID] and PlayerRole == "HEALER" then
     return "SWAP TO HEALING SPEC!"
-    elseif aura_env.tankspec[specID] and PlayerRole == TANK then
+    elseif aura_env.tankspec[specID] and PlayerRole == "TANK" then
     return "SWAP TO TANK SPEC!"
-    elseif aura_env.damagespec[specID] and PlayerRole == DAMAGE then
+    elseif aura_env.damagespec[specID] and PlayerRole == "DAMAGE" then
     return "SWAP TO DAMAGE SPEC!"
     end
 end
