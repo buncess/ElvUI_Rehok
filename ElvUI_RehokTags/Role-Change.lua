@@ -41,10 +41,10 @@ local specValue = GetSpecialization()
 local specID = GetSpecializationInfo(specValue)
 
 if aura_env.healspec[specID] and PlayerRole == "HEALER" then
-    return "SWAP TO HEALING SPEC!"
+    return "SWAP TO HEALING SPEC!" and \\Inteface\LFGFRAME\UI-LFG-ICON-ROLES-HEALING.blp -- icon path
     elseif aura_env.tankspec[specID] and PlayerRole == "TANK" then
-    return "SWAP TO TANK SPEC!"
+    return "SWAP TO TANK SPEC!" and \\Inteface\LFGFRAME\UI-LFG-ICON-ROLES-TANK.blp -- icon path
     elseif aura_env.damagespec[specID] and PlayerRole == "DAMAGE" then
-    return "SWAP TO DAMAGE SPEC!"
+    return "SWAP TO DAMAGE SPEC!" and \\Inteface\LFGFRAME\UI-LFG-ICON-ROLES-DAMAGE.blp -- icon path
     end
 end
