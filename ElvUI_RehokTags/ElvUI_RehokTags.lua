@@ -131,7 +131,7 @@ end
 
 
 function RT:Initialize()
-	print("|cffe300ffRehok Tags|r have Initialized.")
+	print("|cA330C9ffRehok Tags|r have Initialized. Thank you for using my addon :)")
 	RT:NewTags()
 end
 
