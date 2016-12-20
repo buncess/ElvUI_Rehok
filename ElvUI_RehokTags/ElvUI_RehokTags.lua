@@ -12,14 +12,14 @@ function RT:NewTags()
 		if (status) then
 			return status
 		else
-			local v = UnitHealth(unit)
-			local p = (UnitHealth(unit)/UnitHealthMax(unit))*100
-		if abs(v) >= 1e9 then
-			return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
-		elseif abs(v) >= 1e6 then
-			return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
-		elseif abs(v) >= 1e3 then
-			return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
+		local v = UnitHealth(unit)
+		local p = (UnitHealth(unit)/UnitHealthMax(unit))*100
+			if abs(v) >= 1e9 then
+				return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
+			elseif abs(v) >= 1e6 then
+				return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
+			elseif abs(v) >= 1e3 then
+				return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
 			else
 				return format("%d", v) .. " | " .. format("%.1f", p)
 			end
@@ -42,9 +42,9 @@ function RT:NewTags()
 				return format("%.1fK", v / 1e3)
 			else
 				return format("%d", v)
-				end
 			end
 		end
+	end
 
 -- Displays Percent only --(intended for boss frames)--
 	_G["ElvUF"].Tags.Events['rper'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
@@ -58,9 +58,9 @@ function RT:NewTags()
 				return format("%.0f", p)
 			else
 				return format("%.1f", p)
+			end
 		end
 	end
-end
 
 
 
@@ -85,11 +85,11 @@ end
 		local v = UnitPower(unit)
 		local p = (UnitPower(unit)/UnitPowerMax(unit))*100
 			if abs(v) >= 1e9 then
-			return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
+				return format("%.2fB", v / 1e9) .. " | " .. format("%.0f", p)
 			elseif abs(v) >= 1e6 then
-			return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
+				return format("%.2fM", v / 1e6) .. " | " .. format("%.0f", p)
 			elseif abs(v) >= 1e3 then
-			return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
+				return format("%.1fk", v / 1e3) .. " | " .. format("%.0f", p)
 			else
 				return format("%d", v) .. " | " .. format("%.1f", p)
 			end
@@ -126,7 +126,7 @@ end
 		local name = UnitName(unit)
 		name = name:gsub('(%S+) ',function(t) return t:sub(1,1)..'.' end)
     return name
-end
+	end
 end
 
 
