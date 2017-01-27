@@ -130,9 +130,9 @@ function RT:NewTags()
 end
 
 
-function RT:Initialize()
+C_Timer.After(10,function RT:Initialize()
 	print("|cA330C9ffRehok Tags|r have Initialized. Thank you for using my addon :)")
 	RT:NewTags()
-end
+end)
 
 E:RegisterModule(RT:GetName())
